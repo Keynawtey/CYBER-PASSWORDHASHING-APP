@@ -28,7 +28,7 @@ def signup():
                 insert into users (username, email, password, title)values(%s, %s, %s, %s)
                 '''
             
-            cursor.execute(sql, (username, email, password, title))
+            cursor.execute(sql, (username, email, hash_function.hash_password(password), title))
 
             connection.commit()
 
