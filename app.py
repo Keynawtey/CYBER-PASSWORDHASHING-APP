@@ -1,6 +1,8 @@
 from flask import *
 import pymysql
-import hash_function
+# import hash_function
+import bcript
+
 app = Flask(__name__)
 
 # Routes Here
@@ -28,7 +30,7 @@ def signup():
                 insert into users (username, email, password, title)values(%s, %s, %s, %s)
                 '''
             
-            cursor.execute(sql, (username, email, hash_function.hash_password(password), title))
+            cursor.execute(sql, (username, email, bcript.hash_password(password), title))
 
             connection.commit()
 
